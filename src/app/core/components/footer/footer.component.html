@@ -1,0 +1,70 @@
+<!-- Site footer link columns -->
+<aside class="p-b-md p-t-sm section-standout site-footer">
+  <div class="container">
+    <div class="row">
+      @for (column of columns; track column.heading) {
+        <div class="col-md-4">
+          <div class="h4 w-100 brd-bottom brd-highlight p-b" role="heading" aria-level="2">
+            {{ column.heading }}
+          </div>
+          @for (link of column.links; track link.label) {
+            @if (link.routerLink) {
+              <a [routerLink]="link.routerLink" class="d-block no-underline m-y font-size-16">
+                {{ link.label }}
+                @if (link.srOnly) {
+                  <span class="sr-only"> {{ link.srOnly }}</span>
+                }
+              </a>
+            } @else {
+              <a [href]="link.href" class="d-block no-underline m-y font-size-16">
+                {{ link.label }}
+                @if (link.srOnly) {
+                  <span class="sr-only"> {{ link.srOnly }}</span>
+                }
+              </a>
+            }
+          }
+        </div>
+      }
+    </div>
+  </div>
+</aside>
+
+<!-- Global footer bar -->
+<footer id="footer" class="global-footer">
+  <div class="container">
+    <div class="d-flex">
+      <a href="https://ca.gov" class="cagov-logo">
+        <span class="sr-only">CA.gov</span>
+        <span class="ca-gov-logo-svg"></span>
+      </a>
+      <ul class="footer-links">
+        <li><a routerLink="/conditions-of-use">Conditions of use</a></li>
+        <li><a routerLink="/privacy-policy">Privacy policy</a></li>
+        <li><a routerLink="/accessibility">Accessibility</a></li>
+        <li><a routerLink="/website-accessibility-certification">Website accessibility certification</a></li>
+        <li><a routerLink="/sitemap">Sitemap</a></li>
+      </ul>
+      <ul class="socialsharer-container">
+        <li>
+          <a href="https://github.com/Office-of-Digital-Innovation/California-State-Web-HTML"
+             target="_blank"
+             rel="noopener noreferrer">
+            <span class="ca-gov-icon-github" aria-hidden="true"></span>
+            <span class="sr-only">GitHub</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="copyright">
+    <div class="container text-right">
+      <span aria-hidden="true">&copy;</span> {{ year }} State of California
+    </div>
+  </div>
+
+  <button class="return-top">
+    <span class="sr-only">Back to top</span>
+  </button>
+</footer>

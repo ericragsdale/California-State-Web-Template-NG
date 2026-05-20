@@ -1,0 +1,134 @@
+<header role="banner" id="header" class="global-header fixed">
+  <div id="skip-to-content">
+    <a href="#main-content">Skip to Main Content</a>
+  </div>
+
+  <!-- CA.gov utility bar -->
+  <div class="utility-header">
+    <div class="container">
+      <div class="flex-row">
+        <div class="social-media-links">
+          <div class="header-cagov-logo">
+            <a href="https://ca.gov">
+              <span class="sr-only">CA.gov</span>
+              <span class="ca-gov-logo-svg"></span>
+            </a>
+          </div>
+          <p class="official-tag">
+            <span class="desktop-only">Official website of the</span>
+            State of California
+          </p>
+        </div>
+        <div class="settings-links">
+          <a routerLink="/about">About us</a>
+          <a routerLink="/contact">Contacts</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Organization branding -->
+  <div class="section-default">
+    <div class="branding">
+      <div class="header-organization-banner">
+        <a routerLink="/">
+          <div class="logo-assets">
+            <img
+              [src]="config.logoSrc"
+              class="logo-img"
+              [alt]="config.logoAlt"
+              style="aspect-ratio: 80 / 70" />
+            <div class="logo-text">
+              <span class="logo-state">{{ config.orgName }}</span>
+              <span class="logo-dept">{{ config.siteName }}</span>
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mobile hamburger controls -->
+  <div class="mobile-controls">
+    <span class="mobile-control-group mobile-header-icons"></span>
+    <div class="mobile-control-group main-nav-icons">
+      <button
+        id="nav-icon3"
+        type="button"
+        class="mobile-control toggle-menu"
+        aria-expanded="false"
+        aria-controls="navigation">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span class="sr-only">Menu</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Search + navigation -->
+  <div class="navigation-search full-width-nav container">
+    <div id="head-search" class="search-container featured-search">
+      <div class="container">
+        <form id="Search" class="pos-rel" [action]="'/search'" method="get">
+          <span class="sr-only" id="SearchInput">Search</span>
+          <input
+            type="search"
+            name="q"
+            aria-labelledby="SearchInput"
+            placeholder="Search"
+            class="search-textfield" />
+          <button type="submit" class="gsc-search-button">
+            <span class="ca-gov-icon-search" aria-hidden="true"></span>
+            <span class="sr-only">Submit</span>
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <nav id="navigation" class="main-navigation dropdown" aria-label="Main navigation">
+      <ul id="nav_list" class="top-level-nav">
+        @for (item of navItems; track item.label) {
+          <li class="nav-item" [attr.role]="hasChildren(item) ? 'presentation' : null">
+
+            @if (hasChildren(item)) {
+              <!-- Parent with dropdown -->
+              <a class="first-level-link">{{ item.label }}</a>
+              <div class="sub-nav">
+                <ul class="second-level-nav">
+                  @for (child of item.children; track child.label) {
+                    <li class="unit1">
+                      @if (child.routerLink) {
+                        <a [routerLink]="child.routerLink" class="second-level-link">
+                          {{ child.label }}
+                        </a>
+                      } @else {
+                        <a [href]="child.href" class="second-level-link">
+                          {{ child.label }}
+                        </a>
+                      }
+                    </li>
+                  }
+                </ul>
+              </div>
+            } @else if (item.routerLink) {
+              <!-- Internal route -->
+              <a
+                [routerLink]="item.routerLink"
+                routerLinkActive="active"
+                [routerLinkActiveOptions]="{ exact: item.routerLink === '/' }"
+                class="first-level-link">
+                {{ item.label }}
+              </a>
+            } @else {
+              <!-- External link -->
+              <a [href]="item.href" class="first-level-link">{{ item.label }}</a>
+            }
+
+          </li>
+        }
+      </ul>
+    </nav>
+  </div>
+</header>

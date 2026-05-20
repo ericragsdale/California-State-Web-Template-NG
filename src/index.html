@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>California State Web Template</title>
+  <base href="/">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+
+  <!-- Public Sans Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,100..900;1,100..900&display=block"
+    rel="stylesheet">
+
+  <!-- Statewide Alerts (web component served from CDN) -->
+  <script defer src="https://alert.cdt.ca.gov" crossorigin="anonymous"></script>
+
+  <!-- Google Tag Manager
+       Update yourGA4MeasurementId with your organization's GA4 property ID. -->
+  <link rel="preconnect" href="https://www.googletagmanager.com">
+  <link rel="preconnect" href="https://www.google-analytics.com">
+  <script>
+    var yourGA4MeasurementId = 'G-XXXXXXXXXX'; // TODO: replace with your GA4 ID
+    var stateGTMAccount = 'GTM-NJ6Q4MV';
+    (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    (function(){dataLayer.push(arguments)})('config',yourGA4MeasurementId,{cookie_flags:'secure;samesite=lax;domain='});
+    })(window,document,'script','dataLayer',stateGTMAccount);
+  </script>
+</head>
+<body class="primary">
+  <app-root></app-root>
+</body>
+</html>
